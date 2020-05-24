@@ -1,0 +1,162 @@
+﻿
+$main-color: #d0875a;
+$second-color: #f7e9b9;
+$third-color: #f3edd9;
+$main-padding: 35px 0;
+$box-padding: 35px;
+
+
+@mixin flexbox {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+}
+@mixin background-image {
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    min-height: 680px;
+    background-position: center;
+}
+
+%flexcenter {
+    @include flexbox;
+    justify-content: center;
+    align-items: center;
+}
+
+%main-margin {
+    margin: 70px auto;
+
+    @media (max-width: 650px) {
+        margin: 50px auto;
+    }
+}
+
+main {
+    @extend %main-margin;
+}
+
+h1, h2 {
+    line-height: 5.2rem;
+    text-align: center;
+
+    @media (max-width: 650px) {
+        line-height: 3rem;
+    }
+}
+
+nav {
+    background-color: $main-color;
+
+    .menu_bar {
+        @extend %flexcenter;
+        justify-content: space-between;
+        width: 100%;
+        padding: 20px 0;
+
+        ul {
+            list-style: none;
+            width: 70%;
+            @extend %flexcenter;
+            justify-content: flex-end;
+            margin-bottom: 0;
+
+            li {
+                padding: 0 20px;
+
+                a {
+                    color: #fff;
+                }
+            }
+        }
+
+        > a {
+            width: 30%;
+            color: #fff;
+        }
+    }
+}
+
+
+.bg-img {
+    @include background-image;
+    @extend %flexcenter;
+    @extend %main-margin;
+    justify-content: flex-end;
+    padding: $box-padding;
+    background-image: url(../images/spices-2105541_1920.jpg);
+
+    .four-boxes {
+        @extend %flexcenter;
+        width: 50%;
+
+        @media (max-width: 991px) {
+            width: 100%;
+            padding: 0 20px;
+        }
+
+        padding-right: 35px;
+
+        > h2 {
+            width: 100%;
+            text-transform: uppercase;
+            text-align: left;
+        }
+
+        .box {
+            @extend %flexcenter;
+            background: $third-color;
+            padding: 20px;
+            text-align: center;
+            min-height: 150px;
+            width: 47%;
+            margin-bottom: 5%;
+
+            &.even {
+                margin-left: 5%;
+            }
+
+            h4 > a {
+                text-decoration: none;
+                color: #000;
+
+                &:hover {
+                    color: $main-color;
+                }
+            }
+        }
+    }
+}
+
+footer {
+    background-color: $main-color;
+    padding: $main-padding;
+
+    .container {
+        @extend %flexcenter;
+        justify-content: space-between;
+
+        > div {
+            min-height: 200px;
+
+            input[type="email"] {
+                background-color: $main-color;
+                border: none;
+                border-bottom: 1px solid $second-color;
+            }
+
+            input[type="submit"] {
+                margin-left: 10px;
+                text-transform: uppercase;
+                border-radius: 5px;
+                padding: 5px 20px;
+                background-color: $second-color;
+                border: none;
+            }
+        }
+    }
+}
